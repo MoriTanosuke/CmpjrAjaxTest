@@ -1,5 +1,6 @@
 (ns CmpjrAjaxTest.app
   (:use compojure.core
+	clojure.contrib.json
 	ring.adapter.jetty
 	CmpjrAjaxTest.core)
   (:require [compojure.route :as route]
@@ -7,6 +8,9 @@
 
 (defroutes main-routes
   (GET "/" [] "<h1>bar!</h1>")
+  (GET "/json" [] 
+       {:headers {"Content-Type" "text/html"}
+       :body (json-str {:foo "foo", :bar "bar"})})
   (route/resources "/")
   (route/not-found "Page not found"))
 
