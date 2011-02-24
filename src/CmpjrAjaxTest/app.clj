@@ -14,6 +14,7 @@
 (defroutes main-routes
   (GET "/" [] (index {:msg "Hello World!"}))
   (GET "/msg/:msg" [msg] (index {:msg msg}))
+  (GET "/add/:msg" [msg] (str "Not implemented yet. Here is your message: " "<pre>" msg "</pre>"))
   (GET "/json" [] 
     {:headers {"Content-Type" "text/html"}
      :body (json-str {:foo "foo", :bar "bar"})})
